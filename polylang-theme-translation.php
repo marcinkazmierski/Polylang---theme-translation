@@ -20,7 +20,15 @@ class Polylang_Theme_Translation
 
     public function run()
     {
+        $themes = wp_get_themes();
 
+        if (!empty($themes)) {
+            foreach ($themes as $name => $theme) {
+                $theme_path = $theme->theme_root . DIRECTORY_SEPARATOR . $name;
+                $files = $this->get_files_from_dir($theme_path);
+                // TODO...
+            }
+        }
     }
 
     protected function init()
@@ -28,12 +36,41 @@ class Polylang_Theme_Translation
 
     }
 
+    /**
+     * Get files from dictionary recursive.
+     */
     protected function get_files_from_dir($dir_name)
+    {
+        $results = array();
+        $files = scandir($dir_name);
+        foreach ($files as $key => $value) {
+            $path = realpath($dir_name . DIRECTORY_SEPARATOR . $value);
+            if (!is_dir($path)) {
+                $results[] = $path;
+            } else if ($value != "." && $value != "..") {
+                $temp = $this->get_files_from_dir($path);
+                $results = array_merge($results, $temp);
+            }
+        }
+        return $results;
+    }
+
+    protected function file_scanner()
     {
 
     }
 
-    protected function file_scanner()
+    protected function add_to_polylang_register()
+    {
+
+    }
+
+    public function install()
+    {
+
+    }
+
+    public function uninstall()
     {
 
     }
