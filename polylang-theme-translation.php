@@ -102,7 +102,6 @@ class Polylang_Theme_Translation
      */
     protected function add_to_polylang_register($strings, $context)
     {
-
         if (!empty($strings)) {
             foreach ($strings as $string) {
                 pll_register_string($string, $string, $context);
