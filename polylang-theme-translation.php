@@ -9,21 +9,32 @@ License: GPL2
 
 defined('ABSPATH') or die('No script kiddies please!');
 
+/**
+ * Class Polylang_Theme_Translation.
+ */
 class Polylang_Theme_Translation
 {
     protected $plugin_path;
 
+    protected $plugin_name = 'Polylang - theme translation';
+
     protected $files_extensions = array(
-        // 'php',
+        'php',
         'inc',
         'twig',
     );
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->plugin_path = dirname(__FILE__);
     }
 
+    /**
+     * Run plugin.
+     */
     protected function run()
     {
         $themes = wp_get_themes();
@@ -37,10 +48,16 @@ class Polylang_Theme_Translation
         }
     }
 
-
+    /**
+     * Init engine.
+     */
     public function init()
     {
-        $this->run();
+        if (!version_compare(phpversion(), '5', '>=')) {
+            add_action('admin_notices', array($this, 'error_php_version'));
+        } else {
+            $this->run();
+        }
     }
 
     /**
@@ -65,6 +82,9 @@ class Polylang_Theme_Translation
         return $results;
     }
 
+    /**
+     *  Get strings from polylang methods.
+     */
     protected function file_scanner($files)
     {
         $strings = array();
@@ -77,6 +97,9 @@ class Polylang_Theme_Translation
         return $strings;
     }
 
+    /**
+     * Add strings to polylang register.
+     */
     protected function add_to_polylang_register($strings, $context)
     {
 
@@ -87,27 +110,30 @@ class Polylang_Theme_Translation
         }
     }
 
-    public function install()
+    /**
+     * Display PHP version error.
+     */
+    public function error_php_version()
     {
-
+        $class = "error";
+        $message = 'The minimum supported PHP version is 5.0 (Current is: ' . phpversion() . ').';
+        echo "<div class=\"$class\"> <p>$this->plugin_name: $message</p></div>";
     }
-
-    public function uninstall()
-    {
-
-    }
-
 }
 
+/**
+ * Init Polylang Theme Translation plugin.
+ */
 add_action('init', 'process_polylang_theme_translation');
 
 function process_polylang_theme_translation()
 {
     global $pagenow;
     if (is_admin() && $pagenow === 'options-general.php' && isset($_GET['page']) && isset($_GET['tab'])) { // wp-admin/options-general.php?page=mlang&tab=strings
-        if ($_GET['page'] === 'mlang' && $_GET['tab'] === 'strings') { 
+        if ($_GET['page'] === 'mlang' && $_GET['tab'] === 'strings') {
             $plugin_obj = new Polylang_Theme_Translation();
             $plugin_obj->init();
         }
     }
 }
+
