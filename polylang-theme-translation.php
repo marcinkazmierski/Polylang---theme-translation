@@ -79,6 +79,7 @@ class Polylang_Theme_Translation
 
     protected function add_to_polylang_register($strings, $context)
     {
+
         if (!empty($strings)) {
             foreach ($strings as $string) {
                 pll_register_string($string, $string, $context);
@@ -102,6 +103,11 @@ add_action('init', 'process_polylang_theme_translation');
 
 function process_polylang_theme_translation()
 {
-    $plugin_obj = new Polylang_Theme_Translation();
-    $plugin_obj->init();
+    global $pagenow;
+    if (is_admin() && $pagenow === 'options-general.php' && isset($_GET['page']) && isset($_GET['tab'])) { // wp-admin/options-general.php?page=mlang&tab=strings
+        if ($_GET['page'] === 'mlang' && $_GET['tab'] === 'strings') { 
+            $plugin_obj = new Polylang_Theme_Translation();
+            $plugin_obj->init();
+        }
+    }
 }
