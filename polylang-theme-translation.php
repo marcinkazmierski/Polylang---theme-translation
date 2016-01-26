@@ -9,6 +9,8 @@ License: GPL2
 
 defined('ABSPATH') or die('No script kiddies please!');
 
+include_once dirname(__FILE__).DIRECTORY_SEPARATOR.'admin-page-settings.php';
+
 /**
  * Class Polylang_Theme_Translation.
  */
@@ -116,7 +118,7 @@ class Polylang_Theme_Translation
     {
         $class = "error";
         $message = 'The minimum supported PHP version is 5.0 (Current is: ' . phpversion() . ').';
-        echo "<div class=\"$class\"> <p>$this->plugin_name: $message</p></div>";
+        print "<div class=\"$class\"> <p>$this->plugin_name: $message</p></div>";
     }
 }
 
