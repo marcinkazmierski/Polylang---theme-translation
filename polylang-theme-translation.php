@@ -9,7 +9,7 @@ License: GPL2
 
 defined('ABSPATH') or die('No script kiddies please!');
 
-include_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'access.php';
+include_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'polylang-tt-access.php';
 /**
  * Class Polylang_Theme_Translation.
  */
