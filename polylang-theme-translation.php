@@ -1,5 +1,5 @@
 <?php
-/* Plugin Name: Polylang - theme translation
+/* Plugin Name: Polylang - theme translation (PTT)
 Plugin URI: https://github.com/marcinkazmierski/Polylang---theme-translation
 Description: Polylang - theme translation for WordPress
 Version: 1.0
@@ -91,7 +91,7 @@ class Polylang_Theme_Translation
     {
         if (!empty($strings)) {
             foreach ($strings as $string) {
-                pll_register_string($string, $string, $context);
+                pll_register_string($string, $string, __('PTT:').' '.$context);
             }
         }
     }
