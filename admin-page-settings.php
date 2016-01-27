@@ -1,5 +1,6 @@
 <?php
 
+defined('ABSPATH') or die('No script kiddies please!');
 
 /**
  * Class Polylang_TT_admin.
@@ -47,6 +48,8 @@ add_action('admin_menu', 'process_polylang_tt_admin');
 
 function process_polylang_tt_admin()
 {
-    $plugin_obj = new Polylang_TT_admin();
-    $plugin_obj->init();
+    if (Polylang_TT_access::get_instance()->chceck_plugin_access()) {
+        $plugin_obj = new Polylang_TT_admin();
+        $plugin_obj->init();
+    }
 }
