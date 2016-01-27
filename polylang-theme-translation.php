@@ -1,5 +1,5 @@
 <?php
-/* Plugin Name: Polylang - theme translation
+/* Plugin Name: Polylang - theme translation (PTT)
 Plugin URI: https://github.com/marcinkazmierski/Polylang---theme-translation
 Description: Polylang - theme translation for WordPress
 Version: 1.0
@@ -9,14 +9,13 @@ License: GPL2
 
 defined('ABSPATH') or die('No script kiddies please!');
 
+include_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'polylang-tt-access.php';
 /**
  * Class Polylang_Theme_Translation.
  */
 class Polylang_Theme_Translation
 {
     protected $plugin_path;
-
-    protected $plugin_name = 'Polylang - theme translation';
 
     protected $files_extensions = array(
         'php',
@@ -35,7 +34,7 @@ class Polylang_Theme_Translation
     /**
      * Run plugin.
      */
-    protected function run()
+    public function run()
     {
         $themes = wp_get_themes();
         if (!empty($themes)) {
@@ -45,18 +44,6 @@ class Polylang_Theme_Translation
                 $strings = $this->file_scanner($files);
                 $this->add_to_polylang_register($strings, $name);
             }
-        }
-    }
-
-    /**
-     * Init engine.
-     */
-    public function init()
-    {
-        if (!version_compare(phpversion(), '5', '>=')) {
-            add_action('admin_notices', array($this, 'error_php_version'));
-        } else {
-            $this->run();
         }
     }
 
@@ -102,22 +89,11 @@ class Polylang_Theme_Translation
      */
     protected function add_to_polylang_register($strings, $context)
     {
-
         if (!empty($strings)) {
             foreach ($strings as $string) {
-                pll_register_string($string, $string, $context);
+                pll_register_string($string, $string, __('PTT:').' '.$context);
             }
         }
-    }
-
-    /**
-     * Display PHP version error.
-     */
-    public function error_php_version()
-    {
-        $class = "error";
-        $message = 'The minimum supported PHP version is 5.0 (Current is: ' . phpversion() . ').';
-        echo "<div class=\"$class\"> <p>$this->plugin_name: $message</p></div>";
     }
 }
 
@@ -131,8 +107,10 @@ function process_polylang_theme_translation()
     global $pagenow;
     if (is_admin() && $pagenow === 'options-general.php' && isset($_GET['page']) && isset($_GET['tab'])) { // wp-admin/options-general.php?page=mlang&tab=strings
         if ($_GET['page'] === 'mlang' && $_GET['tab'] === 'strings') {
-            $plugin_obj = new Polylang_Theme_Translation();
-            $plugin_obj->init();
+            if (Polylang_TT_access::get_instance()->chceck_plugin_access()) {
+                $plugin_obj = new Polylang_Theme_Translation();
+                $plugin_obj->run();
+            }
         }
     }
 }
