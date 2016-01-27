@@ -9,7 +9,6 @@ License: GPL2
 
 defined('ABSPATH') or die('No script kiddies please!');
 
-include_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'admin-page-settings.php';
 include_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'access.php';
 /**
  * Class Polylang_Theme_Translation.
