@@ -10,6 +10,7 @@ License: GPL2
 defined('ABSPATH') or die('No script kiddies please!');
 
 include_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'polylang-tt-access.php';
+
 /**
  * Class Polylang_Theme_Translation.
  */
@@ -91,7 +92,7 @@ class Polylang_Theme_Translation
     {
         if (!empty($strings)) {
             foreach ($strings as $string) {
-                pll_register_string($string, $string, __('PTT:').' '.$context);
+                pll_register_string($string, $string, __('PTT:') . ' ' . $context);
             }
         }
     }

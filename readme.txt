@@ -6,7 +6,7 @@ Tested up to: 4.4
 Stable tag: 4.3
 License: GPL2
 
-Polylang - theme translation for WordPress
+Polylang - theme translation for WordPress.
 
 == Description ==
 TODO
