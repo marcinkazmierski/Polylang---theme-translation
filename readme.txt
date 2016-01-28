@@ -7,6 +7,7 @@ Stable tag: 4.3
 License: GPL2
 
 Polylang - theme translation for WordPress.
+Extension for Polylang plugin.
 
 == Description ==
 TODO
