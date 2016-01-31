@@ -15,6 +15,7 @@ In addition, is implemented the integration with Timber library (read more: http
 Plugin in searched skins chooses texts from Polylang functions, such as:
 - pll_e
 - pll__
+
 See more on: https://polylang.wordpress.com/documentation/documentation-for-developers/functions-reference/
 This functions are definied by Polylang plugin for printing translations.
 Thanks "Polylang - theme translation" you can find these strings to translate and add to Polylang register on very simple way.
