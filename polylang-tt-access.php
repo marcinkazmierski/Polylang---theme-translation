@@ -8,7 +8,7 @@ defined('ABSPATH') or die('No script kiddies please!');
 class Polylang_TT_access
 {
 
-    protected $plugin_name = 'Polylang - theme translation';
+    protected $plugin_name = 'Theme translation for Polylang';
     private static $instance = false;
 
     /**
