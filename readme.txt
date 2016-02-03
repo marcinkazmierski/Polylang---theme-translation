@@ -3,27 +3,31 @@ Contributors: marcinkazmierski
 Tags: polylang, multilingual, translate, translation, language, languages, twig, multilanguage, international, localization, timber, theme
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 4.3
+Stable tag: 1.1
 License: GPL2
 
 Theme translation using Polylang for WordPress.
 Extension for Polylang plugin.
 
 == Description ==
-What is "Theme translation for Polylang"?
+= What is "Theme translation for Polylang"? =
+
 Extension for Polylang plugin (Polylang is an extension to make multilingual WordPress websites.).
 Plugin is needed to translate the WordPress themes by Polylang.
 
-How it is work?
+= How it is work? =
+
 "Theme translation for Polylang" automatically searches all files of WordPress themes. It chooses  from this file only those files with extensions:
-- php
-- inc
-- twig
+
+*	php
+*	inc
+*	twig
 
 In addition, is implemented the integration with Timber library (read more: http://timber.upstatement.com) – which allows to translate twig's skins in simple way.
 Plugin in searched skins chooses texts from Polylang functions, such as:
-- pll_e
-- pll__
+
+*    pll_e
+*    pll__
 
 See more on: https://polylang.wordpress.com/documentation/documentation-for-developers/functions-reference/
 This functions are definied by Polylang plugin for printing translations.
@@ -48,4 +52,10 @@ This plugin requires PHP 5.0
 
 == Screenshots ==
 
+Screen show "Polylang" strings translate tab settings with "Theme translation for Polylang".
+
 == Changelog ==
+
+= 1.1 - 2016/02/03 =
+
+* Fixed readme.txt
