@@ -1,12 +1,12 @@
 # Theme translation for Polylang
 
 
-What is "Theme translation for Polylang"?
+**What is "Theme translation for Polylang"?**
 
 Extension for Polylang plugin (Polylang is an extension to make multilingual WordPress websites.).
 Plugin is needed to translate the WordPress themes by Polylang.
 
-How it is work?
+**How it is work?**
 
 "Theme translation for Polylang" automatically searches all files of WordPress themes. It chooses  from this file only those files with extensions:
 - php
@@ -20,7 +20,7 @@ Plugin in searched skins chooses texts from Polylang functions, such as:
 - pll__
 
 
-On the timber context declare this functions like:
+**On the timber context declare this functions like:**
 
 $context['pll_e'] = TimberHelper::function_wrapper('pll_e');
 
