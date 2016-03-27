@@ -16,6 +16,11 @@ Plugin in searched skins chooses texts from Polylang functions, such as:
 - pll_e
 - pll__
 
+
+On the timber context declare this functions like:
+$context['pll_e'] = TimberHelper::function_wrapper('pll_e');
+$context['pll_'] = TimberHelper::function_wrapper('pll_');
+
 See more on: https://polylang.wordpress.com/documentation/documentation-for-developers/functions-reference/
 This functions are definied by Polylang plugin for printing translations.
 Thanks "Theme translation for Polylang" you can find these strings to translate and add to Polylang register on very simple way.
@@ -26,4 +31,4 @@ Settings -> Languages -> String translation
 You don't need programs like poedit – you don't change files with extensions like: .pot, .po oraz .mo.
 "Theme translation for Polylang" is highly efficient because the skaner is worked only on admin dashbord in tab: Settings -> Languages -> String translation.
 
-Github repository: https://github.com/marcinkazmierski/Polylang---theme-translation
+WordPress.org: https://pl.wordpress.org/plugins/theme-translation-for-polylang/

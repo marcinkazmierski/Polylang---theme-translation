@@ -1,5 +1,4 @@
 <?php
-
 defined('ABSPATH') or die('No script kiddies please!');
 
 /**
@@ -16,7 +15,6 @@ class Polylang_TT_access
      */
     private function __construct()
     {
-        // TODO.
     }
 
     /**
