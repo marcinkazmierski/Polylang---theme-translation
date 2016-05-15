@@ -59,7 +59,7 @@ class Polylang_Theme_Translation
             $path = realpath($dir_name . DIRECTORY_SEPARATOR . $value);
             if (!is_dir($path)) {
                 $path_parts = pathinfo($path);
-                if (in_array($path_parts['extension'], $this->files_extensions)) {
+                if (!empty($path_parts['extension']) && in_array($path_parts['extension'], $this->files_extensions)) {
                     $results[] = $path;
                 }
             } else if ($value != "." && $value != "..") {
