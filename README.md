@@ -42,3 +42,66 @@ You don't need programs like poedit – you don't change files with extensions l
 "Theme translation for Polylang" is highly efficient because the skaner is worked only on admin dashbord in tab: Settings -> Languages -> String translation.
 
 WordPress.org: https://pl.wordpress.org/plugins/theme-translation-for-polylang/
+
+
+
+
+
+**Installation**
+
+- This plugin requires installed and activated the Polylang plugin,
+- This plugin requires PHP 5.0
+
+1. Upload the "Theme translation for Polylang" folder to the /wp-content/plugins/ directory on your web server.
+2. Activate the plugin through the Plugins menu in WordPress.
+3. Go to the Settings -> Languages -> String translation and find your texts.
+
+
+**How to enable Twig extension with polylang theme translations?[Timber plugin]**
+
+1. In functions.php add:
+```php
+if (!class_exists('Timber')) {
+    add_action('admin_notices', function () {
+        echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url(admin_url('plugins.php#timber')) . '">' . esc_url(admin_url('plugins.php')) . '</a></p></div>';
+    });
+    return;
+}
+
+
+function timber_context()
+{
+    $context = Timber::get_context();
+    $post = Timber::query_post();
+    $context['post'] = $post;
+    $context['pll_e'] = TimberHelper::function_wrapper('pll_e');
+    $context['pll__'] = TimberHelper::function_wrapper('pll__');
+    return $context;
+}
+
+Timber::$dirname = array('templates', 'views'); // directory names with twig templates
+timber_context();
+```
+
+
+Next, for example in index.php add:
+```php
+ $context = timber_context();
+ $templates = array('home.twig', 'index.twig'); // twig files for render
+ Timber::render($templates, $context);
+```
+
+
+Then you can use in twig templates polylang functions like this (in templates/home.twig):
+```twig
+{% extends "base.twig" %}
+ {% block content %}
+     <p>
+         {{ pll_e("Test text on TWIG template 1.") }}
+     </p>
+     <p>
+         {{ pll__("Test text on TWIG template 2.") }}
+     </p>
+ {% endblock %}
+ ```
+
