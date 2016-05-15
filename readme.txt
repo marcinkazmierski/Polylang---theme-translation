@@ -59,7 +59,7 @@ This plugin requires PHP 5.0
 3. Go to the Settings -> Languages -> String translation and find your texts.
 
 
-= How to enable Twig extension with polylang theme translations? =
+= How to enable Twig extension with polylang theme translations? [Timber plugin] =
 
 1. In functions.php add:
 `if (!class_exists('Timber')) {
