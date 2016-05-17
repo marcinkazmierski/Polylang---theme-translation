@@ -123,4 +123,4 @@ Then you can use in twig templates polylang functions like this (in templates/ho
 * Fixed warnings.
 * Test with 4.5 WordPress version.
 * Updated description.
-* Update version.
+* Updated version.
