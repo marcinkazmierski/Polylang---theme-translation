@@ -2,7 +2,7 @@
 /* Plugin Name: Theme translation for Polylang (TTfP)
 Plugin URI: https://github.com/marcinkazmierski/Polylang---theme-translation
 Description: Polylang - theme translation for WordPress
-Version: 1.3.1
+Version: 1.3.2
 Author: Marcin Kazmierski
 License: GPL2
 */
