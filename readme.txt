@@ -2,7 +2,7 @@
 Contributors: marcinkazmierski
 Tags: polylang, multilingual, translate, translation, language, languages, twig, multilanguage, international, localization, timber, theme
 Requires at least: 3.8
-Tested up to: 4.5.2
+Tested up to: 4.6.1
 Stable tag: 1.3.1
 License: GPL2
 
@@ -109,6 +109,11 @@ Then you can use in twig templates polylang functions like this (in templates/ho
 1. Screen show "Polylang" strings translate tab settings with "Theme translation for Polylang".
 
 == Changelog ==
+
+= 1.3.2 - 2016/09/07 =
+
+* Test with 4.6.1 WordPress version.
+* Updated version.
 
 = 1.3.1 - 2016/06/07 =
 
