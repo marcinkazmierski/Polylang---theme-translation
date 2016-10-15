@@ -52,6 +52,22 @@ $templates = array( 'index.twig' );
 Timber::render( $templates, $context );
 ```
 
+6) W zdefiniowanym wcześniej pliku `index.twig` można skorzystać z funkcji polyalng:
+```twig
+{% extends "base.twig" %}
+ {% block content %}
+     <p>
+         {{ pll_e("Test text on TWIG template 1.") }}
+     </p>
+     <p>
+         {{ pll__("Test text on TWIG template 2.") }}
+     </p>
+ {% endblock %}
+```
+`{% extends "base.twig" %}` - oznacza, że rozszerzany jest główny i podstawowy plik szablonu dla skórki WordPress. 
+Plik ten nazywa się `base.twig` i zawiera definicję całej struktury html.
+
+
 ### HTML
 
 1) Wystarczy w każdym miejscu templatki html'owej, w miejscu wyświetlania/generowania 
