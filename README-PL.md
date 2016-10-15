@@ -8,9 +8,9 @@ Silnik do łatwego tłumaczenia skórek WordPress'owych rozszerzający wtyczkę 
 
 ### TWIG
 
-1. Instalujemy i aktywujemy wtyczkę Timber: https://pl.wordpress.org/plugins/timber-library/
+1) Instalujemy i aktywujemy wtyczkę Timber: https://pl.wordpress.org/plugins/timber-library/
 
-2. W pliku `functions.php` skórki WP (theme) w pierwszej kolejności należy sprawdzić czy faktycznie biblioteka Timbera jest włączona.
+2) W pliku `functions.php` skórki WP (theme) w pierwszej kolejności należy sprawdzić czy faktycznie biblioteka Timbera jest włączona.
 
 ```php
 <?php 
@@ -22,7 +22,7 @@ if (!class_exists('Timber')) {
 }
 ```
 
-3. Definiujemy context dla timbera w pliku `functions.php`. 
+3) Definiujemy context dla timbera w pliku `functions.php`. 
 Należy dodać możliwość korzystania z funkcji polylang (pll_e, pll__):
 ```php
 <?php 
@@ -34,7 +34,7 @@ function timber_context() {
 }
 ```
 
-4. Definiujemy dla Timbera katalog w którym będą umieszaczane templatki twig'owe 
+4) Definiujemy dla Timbera katalog, w którym będą umieszaczane templatki twig'owe 
 i ładujemy context timbera do WordPress'a.
 
 ```php
@@ -43,8 +43,8 @@ Timber::$dirname = array('templates');
 timber_context();
 ```
 
-5. W pliku szablonu, np. w index.php lub page.php, renderujemy twig'ową templatkę 
-(plik index.twig musi być umieszony w katalogu templates, tak jak zdefiniowane zostało w poprzenim kroku):
+5) W pliku szablonu np. w index.php lub page.php renderujemy twig'ową templatkę 
+(plik index.twig musi być umieszony w katalogu templates, tak jak zdefiniowane zostało w poprzednim kroku):
 ```php
 <?php
 $context = timber_context();
@@ -54,7 +54,7 @@ Timber::render( $templates, $context );
 
 ### HTML
 
-1. Wystarczy w każdym miejscu templatki html'owej w miejscu wyświetlania/generowania 
+1) Wystarczy w każdym miejscu templatki html'owej, w miejscu wyświetlania/generowania 
 statycznych tekstów użyć funkcji polylang:
 ```php
 <?php 
