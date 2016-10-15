@@ -92,7 +92,7 @@ class Polylang_Theme_Translation
     {
         if (!empty($strings)) {
             foreach ($strings as $string) {
-                pll_register_string($string, $string, __('TTfP:') . ' ' . $context);
+                pll_register_string($string, $string, __('TTfP:', 'polylang-tt') . ' ' . $context);
             }
         }
     }

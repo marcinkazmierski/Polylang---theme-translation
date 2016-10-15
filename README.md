@@ -1,5 +1,6 @@
 # Theme translation for Polylang
 
+[Wersja PL dokumentacji](README-PL.md)
 
 **What is "Theme translation for Polylang"?**
 
@@ -104,4 +105,3 @@ Then you can use in twig templates polylang functions like this (in templates/ho
      </p>
  {% endblock %}
  ```
-
