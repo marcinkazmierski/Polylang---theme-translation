@@ -106,8 +106,8 @@ add_action('init', 'process_polylang_theme_translation');
 function process_polylang_theme_translation()
 {
     global $pagenow;
-    if (is_admin() && $pagenow === 'options-general.php' && isset($_GET['page']) && isset($_GET['tab'])) { // wp-admin/options-general.php?page=mlang&tab=strings
-        if ($_GET['page'] === 'mlang' && $_GET['tab'] === 'strings') {
+    if (is_admin() && $pagenow === 'admin.php' && isset($_GET['page'])) { // wp-admin/admin.php?page=mlang_strings
+        if ($_GET['page'] === 'mlang_strings') {
             if (Polylang_TT_access::get_instance()->chceck_plugin_access()) {
                 $plugin_obj = new Polylang_Theme_Translation();
                 $plugin_obj->run();
