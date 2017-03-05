@@ -7,7 +7,7 @@ defined('ABSPATH') or die('No script kiddies please!');
 class Polylang_TT_access
 {
 
-    protected $plugin_name = 'Theme translation for Polylang';
+    protected $plugin_name = 'Theme and plugin translation for Polylang';
     private static $instance = false;
 
     /**
@@ -63,5 +63,25 @@ class Polylang_TT_access
         $class = "error";
         $message = 'Please, download and activate <a href="https://wordpress.org/plugins/polylang/">Polylang</a> plugin.';
         print "<div class=\"$class\"> <p>$this->plugin_name: $message</p></div>";
+    }
+
+    /**
+     * Check polylang string settings page.
+     * @return bool
+     */
+    public function is_polylang_page()
+    {
+        global $pagenow;
+
+        if (is_admin() && isset($_GET['page']) && !empty($pagenow)) {
+            if ($pagenow === 'options-general.php' && $_GET['page'] === 'mlang' && isset($_GET['tab']) && $_GET['tab'] === 'strings') {
+                // wp-admin/options-general.php?page=mlang&tab=strings
+                return true;
+            } elseif ($pagenow === 'admin.php' && $_GET['page'] === 'mlang_strings') {
+                // wp-admin/admin.php?page=mlang_strings
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,6 +1,6 @@
-# Theme translation for Polylang #
+# Theme and plugin translation for Polylang #
 
-Silnik do łatwego tłumaczenia skórek WordPress'owych rozszerzający wtyczkę Polylang.
+Silnik do łatwego tłumaczenia skórek i wtyczek WordPress'owych rozszerzający wtyczkę Polylang.
 
 [EN doc version](README.md)
 

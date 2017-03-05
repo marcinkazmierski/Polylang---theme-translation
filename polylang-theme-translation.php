@@ -1,8 +1,8 @@
 <?php
-/* Plugin Name: Theme translation for Polylang (TTfP)
+/* Plugin Name: Theme and plugin translation for Polylang (TTfP)
 Plugin URI: https://github.com/marcinkazmierski/Polylang---theme-translation
-Description: Polylang - theme translation for WordPress
-Version: 1.4.0
+Description: Polylang - theme and plugin translation for WordPress
+Version: 2.0.0
 Author: Marcin Kazmierski
 License: GPL2
 */
@@ -37,6 +37,15 @@ class Polylang_Theme_Translation
      */
     public function run()
     {
+        $this->run_theme_scanner();
+        $this->run_plugin_scanner();
+    }
+
+    /**
+     * Find strings in themes.
+     */
+    protected function run_theme_scanner()
+    {
         $themes = wp_get_themes();
         if (!empty($themes)) {
             foreach ($themes as $name => $theme) {
@@ -44,6 +53,32 @@ class Polylang_Theme_Translation
                 $files = $this->get_files_from_dir($theme_path);
                 $strings = $this->file_scanner($files);
                 $this->add_to_polylang_register($strings, $name);
+            }
+        }
+    }
+
+    /**
+     * Find strings in plugins.
+     */
+    protected function run_plugin_scanner()
+    {
+        $excludePlugins = array(
+            'polylang',
+            'polylang-theme-translation'
+        );
+
+        $plugins = wp_get_active_and_valid_plugins();
+
+        if (!empty($plugins)) {
+            foreach ($plugins as $plugin) {
+                $pluginDir = dirname($plugin);
+                $pluginName = pathinfo($plugin, PATHINFO_FILENAME);
+
+                if (!in_array($pluginName, $excludePlugins)) {
+                    $files = $this->get_files_from_dir($pluginDir);
+                    $strings = $this->file_scanner($files);
+                    $this->add_to_polylang_register($strings, $pluginName);
+                }
             }
         }
     }
@@ -105,14 +140,15 @@ add_action('init', 'process_polylang_theme_translation');
 
 function process_polylang_theme_translation()
 {
-    global $pagenow;
-    if (is_admin() && $pagenow === 'admin.php' && isset($_GET['page'])) { // wp-admin/admin.php?page=mlang_strings
-        if ($_GET['page'] === 'mlang_strings') {
-            if (Polylang_TT_access::get_instance()->chceck_plugin_access()) {
-                $plugin_obj = new Polylang_Theme_Translation();
-                $plugin_obj->run();
-            }
+    if (Polylang_TT_access::get_instance()->is_polylang_page()) {
+        if (Polylang_TT_access::get_instance()->chceck_plugin_access()) {
+            $plugin_obj = new Polylang_Theme_Translation();
+            $plugin_obj->run();
         }
     }
 }
+
+
+
+
 
